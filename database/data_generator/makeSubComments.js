@@ -11,6 +11,10 @@ const {
   subCommentTotal,
   commentTotal,
   userTotal,
+  DB_USER,
+  DB_HOST,
+  DB_PASS,
+  DB_NAME,
 } = require('./constants');
 
 // create string to append onto
@@ -58,7 +62,7 @@ data += `${generateSubComment()};`;
 
 // async write to file
 fs.writeFile(
-  path.resolve(__dirname, '..', 'sqlGenerators', 'subCommentsGenerator.sql'),
+  path.resolve(__dirname, 'subCommentsGenerator.sql'),
   data,
   'utf8',
   (err) => {

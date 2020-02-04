@@ -3,7 +3,13 @@
 const fs = require('fs');
 const faker = require('faker');
 const path = require('path');
-const { userTotal } = require('./constants');
+const { 
+  userTotal,
+  DB_USER,
+  DB_HOST,
+  DB_PASS,
+  DB_NAME,
+} = require('./constants');
 
 // id
 // Int pk auto incrementing
@@ -46,7 +52,7 @@ while (userCount > 1) {
 data += `${generateUser()};`;
 
 fs.writeFile(
-  path.resolve(__dirname, '..', 'sqlGenerators', 'usersGenerator.sql'),
+  path.resolve(__dirname, 'usersGenerator.sql'),
   data,
   'utf8',
   (err) => {
