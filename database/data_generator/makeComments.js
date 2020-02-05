@@ -17,10 +17,11 @@ const {
   DB_NAME,
 } = require('./constants');
 
+console.log(DB_NAME)
 let data = `
-create database if not exists bobo_beats;
+create database if not exists ${DB_NAME};
 
-use bobo_beats;
+use ${DB_NAME};
 
 drop table if exists comments;
 

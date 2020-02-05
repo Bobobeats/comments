@@ -1,0 +1,8 @@
+version 3:
+
+services:
+  bobo_beats_comment_db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      
