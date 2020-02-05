@@ -27,12 +27,12 @@ const makeCommentItems = (comments, userObject) => {
  * @param {integer} PAGINATION_LIMIT - used to limit the results from the server's database query 
  */
 const fetchPagination = (songId, nextPagination, PAGINATION_LIMIT) => axios({
-  url: `http://localhost:3000/api/songs/${songId}?page=${nextPagination}&limit=${PAGINATION_LIMIT}&join=false`,
-  params: {
-    songId,
-    nextPagination,
-    PAGINATION_LIMIT,
-  }
+  url: `http://localhost:3001/api/songs/${songId}?page=${nextPagination}&limit=${PAGINATION_LIMIT}&join=false`,
+  // params: {
+  //   songId,
+  //   nextPagination,
+  //   PAGINATION_LIMIT,
+  // }
 })
 
 export { fetchPagination, makeCommentItems };
