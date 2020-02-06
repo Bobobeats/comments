@@ -1,8 +1,20 @@
-version 3:
+version: '3'
 
 services:
   bobo_beats_comment_db:
     image: mysql:5.7
     restart: always
     environment:
-      
+      DB_HOST: 'FILL ME IN'
+      DB_USER: 'FILL ME IN'
+      DB_PASS: 'FILL ME IN'
+      DB_NAME: 'FILL ME IN'
+    ports: 
+      - '3306:3306'
+
+  comment_app:
+    build: .
+    depends_on: 
+      - 'bobo_beats_comment_db'
+    ports:
+      - '3001:3001'

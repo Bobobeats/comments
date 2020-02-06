@@ -17,7 +17,6 @@ const {
   DB_NAME,
 } = require('./constants');
 
-console.log(DB_NAME)
 let data = `
 create database if not exists ${DB_NAME};
 
