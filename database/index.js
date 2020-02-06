@@ -15,7 +15,6 @@ const connection = mysql.createConnection({
 
 module.exports = connection;
 
-
 /**
  * 
 mysql -h bobo_beats_comment_db -P 3306 -uroot
@@ -27,4 +26,6 @@ mysql> GRANT ALL PRIVILEGES ON * . * TO 'bobo_beats_comments'@'%';
 mysql> FLUSH PRIVILEGES;
 
 mysql -h bobo_beats_comment_db -P 3306 -u bobo_beats_comments -p
+
+password: andy_jake_vic
  */
