@@ -20,3 +20,4 @@ services:
       DB_NAME: 'FILL ME IN'
     ports:
       - '4001:3001'
+
