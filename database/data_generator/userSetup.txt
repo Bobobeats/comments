@@ -1,0 +1,5 @@
+CREATE USER 'bobo_beats_comments'@'%' IDENTIFIED BY 'andy_jake_vic';
+
+GRANT ALL PRIVILEGES ON * . * TO 'bobo_beats_comments'@'%';
+
+FLUSH PRIVILEGES; 
