@@ -11,7 +11,7 @@
     "bundle": "webpack --watch",
     "seed": "npm run .createSeedData && npm run .fill_db && echo --- MYSQL DATABASE bebo_beats SUCCESSFULLY SEEDED WITH TABLES: comments, sub_comments, users ---",
     ".createSeedData": "node ./database/data_generator/makeComments.js && node ./database/data_generator/makeSubComments.js && node ./database/data_generator/makeUsers.js",
-    ".fill_db": "mysql -u bobo_beats_comments -p < ./database/data_generator/commentsGenerator.sql && mysql -u bobo_beats_comments -p < ./database/data_generator/usersGenerator.sql && mysql -u bobo_beats_comments -p < ./database/data_generator/subCommentsGenerator.sql"
+    ".fill_db": "mysql -h bobo_beats_comment_db -P 3306 -uroot < ./database/data_generator/userSetup.sql && mysql -h bobo_beats_comment_db -P 3306 -u bobo_beats_comments -p < ./database/data_generator/commentsGenerator.sql && mysql -h bobo_beats_comment_db -P 3306 -u bobo_beats_comments -p < ./database/data_generator/usersGenerator.sql && mysql -h bobo_beats_comment_db -P 3306 -u bobo_beats_comments -p < ./database/data_generator/subCommentsGenerator.sql"
   },
   "repository": {
     "type": "git",
