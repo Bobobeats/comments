@@ -5,16 +5,18 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      DB_HOST: 'FILL ME IN'
-      DB_USER: 'FILL ME IN'
-      DB_PASS: 'FILL ME IN'
-      DB_NAME: 'FILL ME IN'
-    ports: 
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    ports:
       - '3306:3306'
 
   comment_app:
     build: .
     depends_on: 
       - 'bobo_beats_comment_db'
+    environment:
+      DB_HOST: 'FILL ME IN'
+      DB_USER: 'FILL ME IN'
+      DB_PASS: 'FILL ME IN'
+      DB_NAME: 'FILL ME IN'
     ports:
-      - '3001:3001'
+      - '4001:3001'

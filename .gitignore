@@ -5,3 +5,4 @@ coverage/
 *\.map
 *.env
 docker-compose.yml
+!usersGenerator.sql
