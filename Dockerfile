@@ -14,7 +14,7 @@ WORKDIR /src/app
 COPY . /src/app
 
 # Does your app have any dependencies that should be installed?
-RUN yarn install
+RUN yarn install --network-timeout 1000000
 RUN npm run bundle
 
 # What port will the container talk to the outside world with once created?

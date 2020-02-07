@@ -10,8 +10,11 @@ services:
       - '3306:3306'
 
   comment_app:
-    build: .
+    build:
+      context: .
+      dockerfile: .
     volumes:
+      - /src/app/node_modules
       - .:/src/app
     depends_on: 
       - 'bobo_beats_comment_db'
