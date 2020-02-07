@@ -24,9 +24,13 @@ app.get('/comments_bundle', (req, res, next) => {
       res.send(bundle_data);
     }
   })
+  .catch((err) => {
+    console.log(err)
+  })
 });
 
 app.get('/api/songs/:songId', (req, res) => {
+  console.log('getting song')
   let { page, limit, join } = req.query;
   limit = Number(limit);
   const { songId } = req.params;
