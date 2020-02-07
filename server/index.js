@@ -14,9 +14,21 @@ const app = express();
 app.use(express.static(PUBLIC));
 app.use(cors());
 
+app.get('/comments_bundle', (req, res, next) => {
+  console.log('sending comments_bundle');
+  fs.readFile(path.resolve(__dirname, '..', 'client', 'dist', 'comments.bundle.js'), (err, bundle_data) => {
+    if (err) {
+      req.sendStatus(500);
+      throw err;
+    } else {
+      req.send(bundle_data);
+    }
+  })
+});
+
 app.get('/api/songs/:songId', (req, res) => {
   let { page, limit, join } = req.query;
-  limit = +limit;
+  limit = Number(limit);
   const { songId } = req.params;
   if (page === undefined || join === undefined) {
     console.log('something is undefined');
@@ -24,18 +36,6 @@ app.get('/api/songs/:songId', (req, res) => {
       'The URL of the get request must possess a query for a pagination number (page=[num]) and a boolean for a join query or unjoined query (join=[false||true]',
     );
   }
-
-  app.get('/comments_bundle', (req, res, next) => {
-    console.log('sending comments_bundle');
-    fs.readFile(path.resolve(__dirname, '..', 'client', 'dist', 'comments.bundle.js'), (err, bundle_data) => {
-      if (err) {
-        req.sendStatus(500);
-        throw err;
-      } else {
-        req.send(bundle_data);
-      }
-    })
-  })
 
   getTotalCommentCountForSong(songId).then((totalCount) => {
     constructCommentsWithoutJoin(+songId, limit, +page)
