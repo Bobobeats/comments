@@ -18,10 +18,10 @@ app.get('/comments_bundle', (req, res, next) => {
   console.log('sending comments_bundle');
   fs.readFile(path.resolve(__dirname, '..', 'client', 'dist', 'comments.bundle.js'), (err, bundle_data) => {
     if (err) {
-      req.sendStatus(500);
+      res.sendStatus(500);
       throw err;
     } else {
-      req.send(bundle_data);
+      res.send(bundle_data);
     }
   })
 });
