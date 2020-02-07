@@ -18,15 +18,18 @@ app.get('/comments_bundle', (req, res, next) => {
   console.log('sending comments_bundle');
   fs.readFile(path.resolve(__dirname, '..', 'client', 'dist', 'comments.bundle.js'), (err, bundle_data) => {
     if (err) {
-      req.sendStatus(500);
-      throw err;
+      res.sendStatus(500);
     } else {
-      req.send(bundle_data);
+      res.send(bundle_data);
     }
+  })
+  .catch((err) => {
+    console.log(err)
   })
 });
 
 app.get('/api/songs/:songId', (req, res) => {
+  console.log('getting song')
   let { page, limit, join } = req.query;
   limit = Number(limit);
   const { songId } = req.params;
