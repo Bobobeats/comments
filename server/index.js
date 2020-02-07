@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const cors = require('cors');
 const { constructCommentsWithoutJoin } = require('./controller/constructComments');
 const { constructUsers } = require('./controller/constructUsers');
@@ -23,6 +24,19 @@ app.get('/api/songs/:songId', (req, res) => {
       'The URL of the get request must possess a query for a pagination number (page=[num]) and a boolean for a join query or unjoined query (join=[false||true]',
     );
   }
+
+  app.get('/comments_bundle', (req, res, next) => {
+    console.log('sending comments_bundle');
+    fs.readFile(path.resolve(__dirname, '..', 'client', 'dist', 'comments.bundle.js'), (err, bundle_data) => {
+      if (err) {
+        req.sendStatus(500);
+        throw err;
+      } else {
+        req.send(bundle_data);
+      }
+    })
+  })
+
   getTotalCommentCountForSong(songId).then((totalCount) => {
     constructCommentsWithoutJoin(+songId, limit, +page)
       .then((comments) => {
