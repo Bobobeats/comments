@@ -1,5 +1,3 @@
-node_modules
 .gitignore
 .env
 .docker.env
-/docker-compose.yml
