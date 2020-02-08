@@ -1,11 +1,15 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
-const { constructCommentsWithoutJoin } = require('./controller/constructComments');
+const {
+  constructCommentsWithoutJoin,
+} = require('./controller/constructComments');
 const { constructUsers } = require('./controller/constructUsers');
-const { getTotalCommentCountForSong } = require('./controller/getTotalCommentCountForSong');
+const {
+  getTotalCommentCountForSong,
+} = require('./controller/getTotalCommentCountForSong');
 const { parseUsersFromComments } = require('./controller/helpers');
 const PORT = 3001;
 const PUBLIC = path.resolve(__dirname, '..', 'client', 'dist');
@@ -16,20 +20,20 @@ app.use(cors());
 
 app.get('/comments_bundle', (req, res, next) => {
   console.log('sending comments_bundle');
-  fs.readFile(path.resolve(__dirname, '..', 'client', 'dist', 'comments.bundle.js'), (err, bundle_data) => {
-    if (err) {
-      res.sendStatus(500);
-    } else {
-      res.send(bundle_data);
-    }
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+  fs.readFile(
+    path.resolve(__dirname, '..', 'client', 'dist', 'comments.bundle.js'),
+    (err, bundle_data) => {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        res.send(bundle_data);
+      }
+    },
+  );
 });
 
 app.get('/api/songs/:songId', (req, res) => {
-  console.log('getting song')
+  console.log('getting song');
   let { page, limit, join } = req.query;
   limit = Number(limit);
   const { songId } = req.params;

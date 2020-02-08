@@ -8,7 +8,6 @@ import {
 } from './styles/CommentAppStyled';
 import { fetchPagination, makeCommentItems } from '../helpers';
 
-
 /**
  *
  * @param {integer} songId - the id of the song selected, to be retrieved from server
@@ -36,7 +35,7 @@ class CommentApp extends Component {
    * Adds onscroll event listener to the window where the app is mounted
    * This is used to trigger a fetch for next pagination data
    */
-  
+
   /**
    * fetches the next pagination of comment data from CommentApp server using
    * stateful data (this.state.songId, this.state.nextPagination, and this.state.PAGINATION_LIMIT)
@@ -52,10 +51,10 @@ class CommentApp extends Component {
       this.state.songId,
       this.state.nextPagination,
       this.state.PAGINATION_LIMIT,
-      )
+    )
       .then((response) => response.data)
       .then((data) => {
-        console.log(data)
+        console.log(data);
         if (this.state.firstLoad) {
           this.setState({
             totalCommentsAvailable: data.totalCount,
@@ -65,7 +64,7 @@ class CommentApp extends Component {
         } else {
           this.setState({
             commentsRemaining:
-            this.state.commentsRemaining - data.comments.length,
+              this.state.commentsRemaining - data.comments.length,
           });
         }
         this.setState({
@@ -85,42 +84,42 @@ class CommentApp extends Component {
               loading: false,
             });
           }, 200);
-          console.log([...state.commentArray, ...newComments])
-          return {commentArray: [...state.commentArray, ...newComments]};
+          console.log([...state.commentArray, ...newComments]);
+          return { commentArray: [...state.commentArray, ...newComments] };
         });
       })
       .catch((err) => console.log(err));
-    }
-    
-    startPaginationEvent() {
-      window.onscroll = debounce(
-        () => {
-          // if already loading, exit
-          if (this.state.loading) {
-            console.log('already loading');
-            return;
-          }
-          if (
-            Math.ceil(window.innerHeight + document.documentElement.scrollTop) >=
-            document.documentElement.offsetHeight
-          ) {
-            if (this.state.commentsRemaining > 0) {
-              console.log('loading next');
-              this.populateNextComments();
-            } else {
-              console.log('Comments left: ', this.state.commentsRemaining);
-            }
-          }
-        },
-        500,
-        { leading: true },
-      );
-    }
+  }
 
-    /**
-     *
-     * @method
-     */
+  startPaginationEvent() {
+    window.onscroll = debounce(
+      () => {
+        // if already loading, exit
+        if (this.state.loading) {
+          console.log('already loading');
+          return;
+        }
+        if (
+          Math.ceil(window.innerHeight + document.documentElement.scrollTop) >=
+          document.documentElement.offsetHeight
+        ) {
+          if (this.state.commentsRemaining > 0) {
+            console.log('loading next');
+            this.populateNextComments();
+          } else {
+            console.log('Comments left: ', this.state.commentsRemaining);
+          }
+        }
+      },
+      500,
+      { leading: true },
+    );
+  }
+
+  /**
+   *
+   * @method
+   */
   isLoading() {
     if (this.state.loading) {
       return (

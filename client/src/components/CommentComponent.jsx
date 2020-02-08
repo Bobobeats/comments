@@ -34,7 +34,7 @@ const CommentComponent = ({ commentObject, allUsers, child }) => {
         data-test="comment-container"
         onMouseEnter={isHover}
         onMouseLeave={isNotHover}>
-        <Avatar data-test="avatar" src={avatar_url} alt='user_profile' />
+        <Avatar data-test="avatar" src={avatar_url} alt="user_profile" />
         <UserDataDiv data-test="user-data-div">
           <span>{username}</span>
           <AtSpan> at </AtSpan>

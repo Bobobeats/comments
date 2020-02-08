@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  bobo_beats_comment_db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    ports:
+      - '3306:3306'
+
+  comment_app:
+    image: jakewija/bobo_comments:latest
+    depends_on: 
+      - 'bobo_beats_comment_db'
+    environment:
+      DB_HOST: 'bobo_beats_comment_db'
+      DB_USER: 'bobo_beats_comments'
+      DB_PASS: 'andy_jake_vic'
+      DB_NAME: 'bobo_beats_comment_app'
+    ports:
+      - '4001:3001'
