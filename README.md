@@ -17,11 +17,11 @@ Steps to getting up and running:
     
 5) Find the `container id` for the image named 'comments_comment_app' and copy it. For example, `b842a3defdfc` is the from the following example output:
 
-"CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS                     PORTS                               NAMES
+`CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS                     PORTS                               NAMES
     
-`b842a3defdfc`        comments_comment_app   "docker-entrypoint.s…"   20 hours ago        Exited (255) 3 hours ago   0.0.0.0:4001->3001/tcp              comments_comment_app_1
+__b842a3defdfc__        comments_comment_app   "docker-entrypoint.s…"   20 hours ago        Exited (255) 3 hours ago   0.0.0.0:4001->3001/tcp              comments_comment_app_1
 
-fce16a771d66        mysql:5.7              "docker-entrypoint.s…"   20 hours ago        Up 3 hours                 0.0.0.0:3306->3306/tcp, 33060/tcp   comments_bobo_beats_comment_db_1"
+fce16a771d66        mysql:5.7              "docker-entrypoint.s…"   20 hours ago        Up 3 hours                 0.0.0.0:3306->3306/tcp, 33060/tcp   comments_bobo_beats_comment_db_1`
 
 
 6) Enter the following command into your terminal in the root directory of the repo and replace <container_id> with the id you copied in the prior step:
