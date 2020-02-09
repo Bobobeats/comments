@@ -5,7 +5,7 @@ const OUTPUT = path.resolve(__dirname, 'client', 'dist');
 const BUNDLE_NAME = 'comments.bundle.js';
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: ENTRY,
   output: {
     path: OUTPUT,
